@@ -41,6 +41,14 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="game_over_timer" type="Timer" parent="."]
+wait_time = 120.0
+autostart = true
+
+[connection signal="lastMove" from="top_ui" to="grid" method="_on_top_ui_last_move"]
+[connection signal="current_move" from="grid" to="top_ui" method="_on_grid_current_move"]
+[connection signal="current_score" from="grid" to="top_ui" method="_on_grid_current_score"]
 [connection signal="timeout" from="destroy_timer" to="grid" method="_on_destroy_timer_timeout"]
 [connection signal="timeout" from="collapse_timer" to="grid" method="_on_collapse_timer_timeout"]
 [connection signal="timeout" from="refill_timer" to="grid" method="_on_refill_timer_timeout"]
+[connection signal="timeout" from="game_over_timer" to="grid" method="_on_game_over_timer_timeout"]
